@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zoe Chuang - 資深翻譯師</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .profile-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            padding: 60px;
+            width: 100%;
+            max-width: 900px;
+            transform: translateY(20px);
+            opacity: 0;
+            animation: slideUp 0.8s ease-out forwards;
+        }
+
+        @keyframes slideUp {
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .profile-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            margin: 0 auto 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 60px;
+            color: white;
+            font-weight: bold;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .profile-image:hover {
+            transform: scale(1.05);
+        }
+
+        h1 {
+            font-size: 3rem;
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .subtitle {
+            font-size: 1.3rem;
+            color: #667eea;
+            font-weight: 500;
+            margin-bottom: 30px;
+        }
+
+        .content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            margin-bottom: 40px;
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.7);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .section h2 {
+            color: #2c3e50;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .icon {
+            width: 24px;
+            height: 24px;
+            background: #667eea;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 12px;
+        }
+
+        .section p {
+            color: #555;
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .skill-tag {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: transform 0.3s ease;
+        }
+
+        .skill-tag:hover {
+            transform: scale(1.05);
+        }
+
+        .contact {
+            text-align: center;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 40px;
+            border-radius: 15px;
+            margin-top: 30px;
+        }
+
+        .contact h2 {
+            color: white;
+            margin-bottom: 20px;
+        }
+
+        .email {
+            font-size: 1.3rem;
+            font-weight: 600;
+            text-decoration: none;
+            color: white;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 15px 30px;
+            border-radius: 30px;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+
+        .email:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .languages {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .language-item {
+            text-align: center;
+            padding: 20px;
+            background: rgba(102, 126, 234, 0.1);
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .language-item:hover {
+            transform: translateY(-3px);
+        }
+
+        .language-flag {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .profile-card {
+                padding: 40px 30px;
+            }
+
+            .content {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .languages {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .floating-elements {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .floating-element {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .floating-element:nth-child(1) {
+            width: 80px;
+            height: 80px;
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .floating-element:nth-child(2) {
+            width: 60px;
+            height: 60px;
+            top: 60%;
+            right: 10%;
+            animation-delay: 2s;
+        }
+
+        .floating-element:nth-child(3) {
+            width: 100px;
+            height: 100px;
+            bottom: 20%;
+            left: 20%;
+            animation-delay: 4s;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="floating-elements">
+        <div class="floating-element"></div>
+        <div class="floating-element"></div>
+        <div class="floating-element"></div>
+    </div>
+
+    <div class="container">
+        <div class="profile-card">
+            <div class="header">
+                <div class="profile-image">ZC</div>
+                <h1>Zoe Chuang</h1>
+                <div class="subtitle">資深專業翻譯師 | Veteran Professional Translator</div>
+            </div>
+
+            <div class="content">
+                <div class="section">
+                    <h2>
+                        <span class="icon">📚</span>
+                        專業背景
+                    </h2>
+                    <p>
+                        作為一名資深翻譯師，我擁有豐富的跨語言溝通經驗，專精於多領域的翻譯工作。憑藉深厚的語言功底和文化理解，我致力於為客戶提供精準、流暢且具有文化適應性的翻譯服務。
+                    </p>
+                    <div class="skills">
+                        <span class="skill-tag">商務翻譯</span>
+                        <span class="skill-tag">技術文件</span>
+                        <span class="skill-tag">學術論文</span>
+                        <span class="skill-tag">法律文件</span>
+                        <span class="skill-tag">醫學翻譯</span>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h2>
+                        <span class="icon">🌍</span>
+                        語言專長
+                    </h2>
+                    <p>
+                        精通多種語言，具備深度的跨文化理解能力，能夠準確傳達原文的語意和文化內涵，確保翻譯品質達到母語水準。
+                    </p>
+                    <div class="languages">
+                        <div class="language-item">
+                            <div class="language-flag">🇹🇼</div>
+                            <strong>繁體中文</strong><br>
+                            母語水準
+                        </div>
+                        <div class="language-item">
+                            <div class="language-flag">🇺🇸</div>
+                            <strong>英語</strong><br>
+                            專業流利
+                        </div>
+                        <div class="language-item">
+                            <div class="language-flag">🇯🇵</div>
+                            <strong>日語</strong><br>
+                            商務水準
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h2>
+                        <span class="icon">⭐</span>
+                        服務特色
+                    </h2>
+                    <p>
+                        提供全方位的翻譯服務，從初稿翻譯到最終校對，每個環節都嚴格把關。注重細節，確保術語一致性，並根據目標受眾調整語言風格，讓翻譯成果既專業又易讀。
+                    </p>
+                    <div class="skills">
+                        <span class="skill-tag">快速交付</span>
+                        <span class="skill-tag">品質保證</span>
+                        <span class="skill-tag">專業校對</span>
+                        <span class="skill-tag">客製化服務</span>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h2>
+                        <span class="icon">🎯</span>
+                        工作理念
+                    </h2>
+                    <p>
+                        翻譯不僅是語言的轉換，更是文化的橋樑。我相信每一份翻譯作品都承載著溝通的使命，因此我始終以嚴謹的態度對待每一個項目，力求在保持原文精神的同時，讓譯文在目標語言中自然流暢。
+                    </p>
+                    <div class="skills">
+                        <span class="skill-tag">精益求精</span>
+                        <span class="skill-tag">文化敏感</span>
+                        <span class="skill-tag">持續學習</span>
+                        <span class="skill-tag">客戶至上</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contact">
+                <h2>聯絡方式 | Contact Information</h2>
+                <a href="mailto:meow1014@gmail.com" class="email">meow1014@gmail.com</a>
+                <p style="margin-top: 20px; opacity: 0.9;">
+                    歡迎聯繫討論您的翻譯需求<br>
+                    Feel free to reach out to discuss your translation needs
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 添加滾動動畫效果
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(section => {
+                const rect = section.getBoundingClientRect();
+                if (rect.top < window.innerHeight && rect.bottom > 0) {
+                    section.style.opacity = '1';
+                    section.style.transform = 'translateY(0)';
+                }
+            });
+        });
+
+        // 添加技能標籤點擊效果
+        document.querySelectorAll('.skill-tag').forEach(tag => {
+            tag.addEventListener('click', function() {
+                this.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    this.style.transform = 'scale(1.05)';
+                }, 100);
+                setTimeout(() => {
+                    this.style.transform = 'scale(1)';
+                }, 200);
+            });
+        });
+
+        // 添加郵件連結點擊追蹤
+        document.querySelector('.email').addEventListener('click', function() {
+            console.log('Email contact initiated');
+        });
+    </script>
+</body>
+</html>
+
